@@ -37,7 +37,7 @@ const Header = () => {
           />
           <div
             className={`bg-white absolute right-10 w-36 rounded-md divide-y py-2 ${
-              open ? "scale-100 top-16" : "top-10 scale-0"
+              open ? "opacity-100 top-16" : "top-10 opacity-0 invisible"
             } duration-300`}
           >
             <ul className="">

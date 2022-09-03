@@ -9,7 +9,7 @@ const Sidebar = () => {
   return (
     <div
       className={`bg-white h-screen shadow ${
-        sidebarOpen ? "w-60" : "w-16"
+        sidebarOpen ? "w-80" : "w-16"
       } duration-300`}
     >
       <div className="flex items-center space-x-2 text-2xl py-5 pl-5 shadow">
@@ -30,7 +30,7 @@ const Sidebar = () => {
             {/* Section */}
             <h4
               className={`${
-                sidebarOpen ? "scale-100" : "scale-0 -ml-20"
+                sidebarOpen ? "opacity-100" : "opacity-0 -ml-20"
               } uppercase font-semibold  duration-300`}
             >
               {sidebarLink.sectionHeader}
