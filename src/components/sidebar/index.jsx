@@ -1,21 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { sidebarLinks } from "./sidebarLinks";
 import { SiShopware } from "react-icons/si";
+import { useAppContext } from "../../hooks/useAppContext";
 
 const Sidebar = () => {
+  const { sidebarOpen } = useAppContext();
+
   return (
-    <div className="bg-white w-60  h-screen shadow">
+    <div
+      className={`bg-white h-screen shadow ${
+        sidebarOpen ? "w-60" : "w-16"
+      } duration-300`}
+    >
       <div className="flex items-center space-x-2 text-2xl py-5 pl-5 shadow">
         <span>
           <SiShopware />
         </span>
-        <span>Biggins</span>
+        <span
+          className={`${
+            sidebarOpen ? "scale-100" : "scale-0 pl-20"
+          } duration-300`}
+        >
+          Biggins
+        </span>
       </div>
-      <div className="p-5 space-y-3">
+      <div className={`${sidebarOpen ? "px-5" : "px-3"} py-5 space-y-3`}>
         {sidebarLinks.map((sidebarLink, index) => (
           <div key={index}>
             {/* Section */}
-            <h4 className="uppercase font-semibold">
+            <h4
+              className={`${
+                sidebarOpen ? "scale-100" : "scale-0 -ml-20"
+              } uppercase font-semibold  duration-300`}
+            >
               {sidebarLink.sectionHeader}
             </h4>
 
@@ -23,10 +40,24 @@ const Sidebar = () => {
             {sidebarLink.links.map((link, index) => (
               <div
                 key={index}
-                className="flex gap-2 items-center pl-5 py-2 text-gray-700 rounded hover:bg-teal-500 hover:text-white cursor-pointer hover:font-bold duration-200"
+                className={
+                  "flex gap-2 items-center py-2 text-gray-700 rounded hover:bg-teal-500 hover:text-white cursor-pointer hover:font-bold"
+                }
               >
-                <span>{React.createElement(link.icon)}</span>
-                <span>{link.label}</span>
+                <span
+                  className={`${
+                    sidebarOpen ? "pl-5" : "pl-2.5 text-xl"
+                  } duration-300`}
+                >
+                  {React.createElement(link.icon)}
+                </span>
+                <span
+                  className={`${
+                    sidebarOpen ? "scale-100" : "scale-0 ml-10"
+                  } duration-300`}
+                >
+                  {link.label}
+                </span>
               </div>
             ))}
           </div>
